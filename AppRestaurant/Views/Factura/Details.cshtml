@@ -1,0 +1,50 @@
+﻿@model AppRestaurant.Models.tblFactura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblFactura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFactura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFactura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblCamarero.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCamarero.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblCliente.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCliente.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblMesa.Ubicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblMesa.Ubicacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFactura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

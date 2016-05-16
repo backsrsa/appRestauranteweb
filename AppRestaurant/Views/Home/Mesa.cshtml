@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Mesas";
+}
+  
+<div data-ng-controller="mesaController" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <strong class="error">{{ error }}</strong>
+            <br />
+            <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="btn btn-primary">Nueva mesa</a></p>
+            <form name="addCustomer" data-ng-show="addMode" style="width:600px;margin:0px auto;">
+                 
+                <div class="form-group">
+                    <label for="cname" class="col-sm-2 control-label">Comensales:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="comensales" placeholder="Comensales" data-ng-model="newcustomer.NumMaxComensales" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-sm-2 control-label">Ubicación:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ubicacion" placeholder="Ubicación" data-ng-model="newcustomer.Ubicacion" required />
+                    </div>
+                </div>                 
+
+                <br />
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Guardar" data-ng-click="add()" data-ng-disabled="!addCustomer.$valid" class="btn btn-primary" />
+                        <input type="button" value="Cancelar" data-ng-click="toggleAdd()" class="btn btn-primary" />
+                    </div>
+                </div>
+                <br />
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" style="width:800px">
+                    <tr>
+                        <th>#</th>
+                        <td>Num. Comensales </td>
+                        <th>Ubicacion </th>
+                        <th>Opciones</th>
+                    </tr>
+                    <tr data-ng-repeat="mesa in mesa">
+                        <td><strong data-ng-hide="mesa.editMode">{{ mesa.IdMesa }}</strong></td>
+                        <td>
+                            <p data-ng-hide="mesa.editMode">{{ mesa.NumMaxComensales }}</p>
+                            <input data-ng-show="mesa.editMode" type="text" data-ng-model="mesa.NumMaxComensales" />
+                        </td>
+                        <td>
+                            <p data-ng-hide="mesa.editMode">{{ mesa.Ubicacion }}</p>
+                            <input data-ng-show="mesa.editMode" type="text" data-ng-model="mesa.Ubicacion" />
+                        </td>
+                        
+
+                        <td>
+                            <p data-ng-hide="mesa.editMode"><a data-ng-click="toggleEdit(mesa)" href="javascript:;" class="btn btn-success" >Editar</a> | <a data-ng-click="deletecustomer(mesa)" href="javascript:;"  class="btn btn-danger">Eliminar</a></p>
+                            <p data-ng-show="mesa.editMode"><a data-ng-click="save(mesa)" href="javascript:;" class="btn btn-primary">Guardar</a> | <a data-ng-click="toggleEdit(mesa)" href="javascript:;" class="btn btn-danger">Cancelar</a></p>
+                        </td>
+                    </tr>
+                </table>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div id="mydiv" data-ng-show="loading">
+        <img src="../Images/ajax-loader.gif" class="ajax-loader" />
+    </div>
+</div>
